@@ -1,0 +1,178 @@
+# =====================================================================
+# GridSentinel AI - central configuration
+# Every tunable parameter of the platform lives here. Paths are relative
+# to the project root. Override the file with the GRIDSENTINEL_CONFIG
+# environment variable, or individual keys on the CLI with
+#   --set section.key=value
+# =====================================================================
+
+project:
+  name: GridSentinel AI
+  random_seed: 42            # master seed for reproducible runs
+
+paths:
+  database: data/gridsentinel.db
+  exports: data/exports
+  processed: data/processed
+  raw: data/raw
+  models: models
+  logs: logs
+  results: results
+  stop_flag: data/STOP_SIMULATOR   # creating this file stops a running simulator
+
+simulation:
+  interval_s: 1.0            # live sampling interval (seconds)
+  enforce_q_limits: false    # PYPOWER ENFORCE_Q_LIMS (PV->PQ conversion)
+  max_consecutive_pf_failures: 10   # stop the run after this many non-converged steps
+  stale_after_s: 6.0         # API/dashboard flag the stream stale after this gap
+  commit_every_steps: 1      # live mode commits every step (fast dataset mode overrides)
+  replay_rate: 1.0           # dataset replay playback rate (x real time)
+
+load_profile:
+  # total demand multiplier = periodic * scenario * correlated factor * (bus-level noise)
+  periodic:
+    enabled: true
+    period_steps: 900        # one compressed "day" = 900 steps (15 min at 1 s/step)
+    amplitude: 0.18          # +/- 18 % daily swing around the scenario level
+  profiles:                  # each load bus gets one profile (seeded assignment)
+    residential: {peak_phase: 0.80, weight: 0.45}
+    commercial:  {peak_phase: 0.55, weight: 0.35}
+    industrial:  {peak_phase: 0.40, weight: 0.20}
+  correlated:
+    enabled: true
+    ar_coefficient: 0.97     # AR(1) system-wide demand factor
+    sigma: 0.012
+  independent:
+    enabled: true
+    ar_coefficient: 0.90     # AR(1) per-bus factor
+    sigma: 0.015
+  scenarios:                 # time-varying operating scenarios (Markov switching)
+    enabled: true
+    levels: {light: 0.80, normal: 1.00, heavy: 1.15}
+    mean_dwell_steps: 400
+  power_factor_jitter: 0.01  # independent Q variation relative to P
+  min_multiplier: 0.50
+  max_multiplier: 1.40
+
+generation:
+  dispatch_variation: true   # redistribute demand changes over PV generators
+  participation: headroom    # headroom | equal
+  random_redispatch_sigma: 0.01   # small random re-dispatch (fraction of Pmax)
+  slack_margin_mw: 0.0       # slack generator P must stay within [Pmin - m, Pmax + m]
+
+noise:                       # z_meas = z_true + eps, eps ~ N(0, sigma^2)
+  seed_offset: 1000
+  voltage_pu: 0.002
+  angle_deg: 0.10
+  power_relative: 0.01       # sigma = rel * |value| + floor
+  power_floor_mw: 0.20
+  current_relative: 0.01
+  current_floor_a: 1.0
+
+attacks:
+  enabled: true
+  seed_offset: 2000
+  initial_delay_steps: 30
+  min_gap_steps: 20          # minimum normal steps between attacks
+  start_probability: 0.04    # per-step start probability after the minimum gap
+  duration_steps: [10, 40]
+  type_weights: {additive: 1.0, scaling: 1.0, replay: 1.0, coordinated: 1.0}
+  channels: [V, Ang]         # attack surface (bus voltage magnitude / angle sensors)
+  allow_power_channels: false   # if true, P/Q injection sensors may also be attacked
+  line_sensor_attack: false     # explicitly labelled line-sensor attack mode
+  intensity: 1.0             # global multiplier on attack magnitudes
+  additive:
+    bus_count: [1, 3]
+    voltage_offset_pu: [0.008, 0.04]
+    angle_offset_deg: [0.4, 3.0]
+  scaling:
+    bus_count: [1, 3]
+    voltage_factor_dev: [0.008, 0.04]   # factor = 1 +/- dev
+    angle_factor_dev: [0.05, 0.30]
+  replay:
+    bus_count: [2, 6]
+    lag_steps: [60, 300]
+    min_history_steps: 320   # replay only starts when this much history exists
+  coordinated:
+    bus_count: [3, 7]
+    voltage_offset_pu: [0.006, 0.03]
+    angle_offset_deg: [0.3, 2.5]
+    hop_decay: 0.7           # offset weight = decay ** hop_distance from the seed bus
+
+dataset:
+  # independent simulation runs used for research datasets (run-group splits)
+  steps_per_run: 2500
+  train_runs: 6
+  validation_runs: 2
+  test_runs: 2
+  stress_test:               # extra test runs under different conditions
+    high_noise: {noise.voltage_pu: 0.004, noise.angle_deg: 0.2, noise.power_relative: 0.02}
+    heavy_load: {load_profile.scenarios.levels.light: 1.05, load_profile.scenarios.levels.normal: 1.15, load_profile.scenarios.levels.heavy: 1.25}
+    low_intensity: {attacks.intensity: 0.5}
+
+features:
+  rolling_window: 5
+  history_steps: 6           # rows of history needed for live temporal features
+  physics_features: false    # opt-in WLS normalised-residual feature group (slow: ~15-60 ms/row)
+
+ml:
+  n_jobs: -1                 # training parallelism (inference always uses 1 core)
+  detection:
+    n_estimators: 200
+    max_depth: null
+    min_samples_leaf: 2
+    max_features: sqrt
+    class_weight: balanced
+  localization:
+    n_estimators: 120
+    max_depth: null
+    min_samples_leaf: 2
+    max_features: sqrt
+    class_weight: balanced
+    training_set: compare    # attack_only | all | compare (choose on validation)
+    feature_scope: local     # local (bus + neighbours + global) | global
+    min_positive_examples: 25
+  attack_type:
+    n_estimators: 200
+    max_depth: null
+    min_samples_leaf: 2
+    max_features: sqrt
+    class_weight: balanced
+  severity:
+    enabled: true
+    n_estimators: 150
+    min_samples_leaf: 3
+    max_features: sqrt
+  detection_threshold: calibrate   # 'calibrate' (max F1 on validation runs) or a number
+
+physics:
+  chi2_alpha: 0.01           # chi-square bad-data test significance
+  normalized_residual_threshold: 3.0
+  max_iterations: 15
+  tolerance: 1.0e-6
+  use_pmu_angles: true       # include bus angle measurements in WLS
+  max_lnr_removals: 12       # largest-normalised-residual iterations in mitigation
+
+api:
+  host: 127.0.0.1
+  port: 8000
+  monitor_poll_s: 0.5        # backend monitor checks for new snapshots this often
+  max_catch_up_steps: 20     # beyond this backlog, steps are counted as dropped
+  history_limit: 600
+
+dashboard:
+  host: 127.0.0.1
+  port: 8050
+  refresh_ms: 2000           # header KPIs + overview
+  tab_refresh_ms: 5000       # heavier tabs (twin, measurements, attacks, AI, physics, alerts)
+  history_points: 300
+
+retention:
+  live_max_steps: 200000     # oldest rows of live runs beyond this are pruned
+  prune_every_steps: 1000
+
+hardware:
+  enabled: false
+  mqtt_host: localhost
+  mqtt_port: 1883
+  topic: gridsentinel/telemetry/#

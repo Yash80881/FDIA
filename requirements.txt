@@ -1,0 +1,25 @@
+# GridSentinel AI - tested with Python 3.11 (exact versions used to build and test the project).
+# Trained model files (.joblib) are tied to the scikit-learn version below; if you install a
+# different scikit-learn, retrain with:  python cli.py train
+PYPOWER==5.1.21
+numpy==2.4.6
+scipy==1.17.1
+pandas==3.1.1
+scikit-learn==1.9.1
+joblib==1.6.0
+PyYAML==6.0.3
+networkx==3.6.1
+fastapi==0.162.6
+starlette==1.10.0
+pydantic==2.14.3
+uvicorn==0.54.0
+httpx==0.28.1
+requests==2.34.2
+dash==4.5.0
+plotly==7.1.0
+matplotlib==3.11.2
+pytest==9.2.0
+
+# Optional
+# paho-mqtt        - hardware/mqtt_gateway.py (optional ESP32 / Raspberry Pi telemetry)
+# kaleido==1.5.1   - static PNG export of Plotly figures

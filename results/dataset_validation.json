@@ -1,0 +1,1205 @@
+{
+  "passed": true,
+  "checks": [
+    [
+      "[ds-train-s1003-20261113-173924-3203] schema columns",
+      true,
+      "missing=[] extra=[]"
+    ],
+    [
+      "[ds-train-s1003-20261113-173924-3203] missing values",
+      true,
+      "0 columns with NaN: []"
+    ],
+    [
+      "[ds-train-s1003-20261113-173924-3203] power flow converged",
+      true,
+      "0 non-converged rows"
+    ],
+    [
+      "[ds-train-s1003-20261113-173924-3203] bus labels imply global label",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1003-20261113-173924-3203] global label implies a bus label (bus-channel attacks)",
+      true,
+      "rows with attack_active=1 but no bus label (line-only attacks)"
+    ],
+    [
+      "[ds-train-s1003-20261113-173924-3203] attacked_bus_count consistent",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1003-20261113-173924-3203] normal rows labelled 'normal'",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1003-20261113-173924-3203] normal rows have zero severity",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1003-20261113-173924-3203] normal rows have no attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1003-20261113-173924-3203] attack rows have valid type",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1003-20261113-173924-3203] attack rows have attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1003-20261113-173924-3203] attack rows have severity > 0",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1003-20261113-173924-3203] non-attacked V within 6 sigma of truth",
+      true,
+      "max |dV|=0.00841"
+    ],
+    [
+      "[ds-train-s1003-20261113-173924-3203] non-attacked angle within 6 sigma of truth",
+      true,
+      "max |dAng|=0.4551"
+    ],
+    [
+      "[ds-train-s1003-20261113-173924-3203] noise present on normal rows",
+      true,
+      "std dV=0.00200"
+    ],
+    [
+      "[ds-train-s1003-20261113-173924-3203] steps unique/increasing [ds-train-s1003-20261113-173924-3203]",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1003-20261113-173924-3203] each attack id has one type and contiguous steps",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1001-20261113-173924-c075] schema columns",
+      true,
+      "missing=[] extra=[]"
+    ],
+    [
+      "[ds-train-s1001-20261113-173924-c075] missing values",
+      true,
+      "0 columns with NaN: []"
+    ],
+    [
+      "[ds-train-s1001-20261113-173924-c075] power flow converged",
+      true,
+      "0 non-converged rows"
+    ],
+    [
+      "[ds-train-s1001-20261113-173924-c075] bus labels imply global label",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1001-20261113-173924-c075] global label implies a bus label (bus-channel attacks)",
+      true,
+      "rows with attack_active=1 but no bus label (line-only attacks)"
+    ],
+    [
+      "[ds-train-s1001-20261113-173924-c075] attacked_bus_count consistent",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1001-20261113-173924-c075] normal rows labelled 'normal'",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1001-20261113-173924-c075] normal rows have zero severity",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1001-20261113-173924-c075] normal rows have no attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1001-20261113-173924-c075] attack rows have valid type",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1001-20261113-173924-c075] attack rows have attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1001-20261113-173924-c075] attack rows have severity > 0",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1001-20261113-173924-c075] non-attacked V within 6 sigma of truth",
+      true,
+      "max |dV|=0.00968"
+    ],
+    [
+      "[ds-train-s1001-20261113-173924-c075] non-attacked angle within 6 sigma of truth",
+      true,
+      "max |dAng|=0.4216"
+    ],
+    [
+      "[ds-train-s1001-20261113-173924-c075] noise present on normal rows",
+      true,
+      "std dV=0.00201"
+    ],
+    [
+      "[ds-train-s1001-20261113-173924-c075] steps unique/increasing [ds-train-s1001-20261113-173924-c075]",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1001-20261113-173924-c075] each attack id has one type and contiguous steps",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1002-20261113-173924-fa44] schema columns",
+      true,
+      "missing=[] extra=[]"
+    ],
+    [
+      "[ds-train-s1002-20261113-173924-fa44] missing values",
+      true,
+      "0 columns with NaN: []"
+    ],
+    [
+      "[ds-train-s1002-20261113-173924-fa44] power flow converged",
+      true,
+      "0 non-converged rows"
+    ],
+    [
+      "[ds-train-s1002-20261113-173924-fa44] bus labels imply global label",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1002-20261113-173924-fa44] global label implies a bus label (bus-channel attacks)",
+      true,
+      "rows with attack_active=1 but no bus label (line-only attacks)"
+    ],
+    [
+      "[ds-train-s1002-20261113-173924-fa44] attacked_bus_count consistent",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1002-20261113-173924-fa44] normal rows labelled 'normal'",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1002-20261113-173924-fa44] normal rows have zero severity",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1002-20261113-173924-fa44] normal rows have no attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1002-20261113-173924-fa44] attack rows have valid type",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1002-20261113-173924-fa44] attack rows have attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1002-20261113-173924-fa44] attack rows have severity > 0",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1002-20261113-173924-fa44] non-attacked V within 6 sigma of truth",
+      true,
+      "max |dV|=0.00846"
+    ],
+    [
+      "[ds-train-s1002-20261113-173924-fa44] non-attacked angle within 6 sigma of truth",
+      true,
+      "max |dAng|=0.3970"
+    ],
+    [
+      "[ds-train-s1002-20261113-173924-fa44] noise present on normal rows",
+      true,
+      "std dV=0.00201"
+    ],
+    [
+      "[ds-train-s1002-20261113-173924-fa44] steps unique/increasing [ds-train-s1002-20261113-173924-fa44]",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1002-20261113-173924-fa44] each attack id has one type and contiguous steps",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1004-20261113-173924-78a4] schema columns",
+      true,
+      "missing=[] extra=[]"
+    ],
+    [
+      "[ds-train-s1004-20261113-173924-78a4] missing values",
+      true,
+      "0 columns with NaN: []"
+    ],
+    [
+      "[ds-train-s1004-20261113-173924-78a4] power flow converged",
+      true,
+      "0 non-converged rows"
+    ],
+    [
+      "[ds-train-s1004-20261113-173924-78a4] bus labels imply global label",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1004-20261113-173924-78a4] global label implies a bus label (bus-channel attacks)",
+      true,
+      "rows with attack_active=1 but no bus label (line-only attacks)"
+    ],
+    [
+      "[ds-train-s1004-20261113-173924-78a4] attacked_bus_count consistent",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1004-20261113-173924-78a4] normal rows labelled 'normal'",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1004-20261113-173924-78a4] normal rows have zero severity",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1004-20261113-173924-78a4] normal rows have no attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1004-20261113-173924-78a4] attack rows have valid type",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1004-20261113-173924-78a4] attack rows have attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1004-20261113-173924-78a4] attack rows have severity > 0",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1004-20261113-173924-78a4] non-attacked V within 6 sigma of truth",
+      true,
+      "max |dV|=0.00855"
+    ],
+    [
+      "[ds-train-s1004-20261113-173924-78a4] non-attacked angle within 6 sigma of truth",
+      true,
+      "max |dAng|=0.4377"
+    ],
+    [
+      "[ds-train-s1004-20261113-173924-78a4] noise present on normal rows",
+      true,
+      "std dV=0.00200"
+    ],
+    [
+      "[ds-train-s1004-20261113-173924-78a4] steps unique/increasing [ds-train-s1004-20261113-173924-78a4]",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1004-20261113-173924-78a4] each attack id has one type and contiguous steps",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1005-20261113-174059-bff4] schema columns",
+      true,
+      "missing=[] extra=[]"
+    ],
+    [
+      "[ds-train-s1005-20261113-174059-bff4] missing values",
+      true,
+      "0 columns with NaN: []"
+    ],
+    [
+      "[ds-train-s1005-20261113-174059-bff4] power flow converged",
+      true,
+      "0 non-converged rows"
+    ],
+    [
+      "[ds-train-s1005-20261113-174059-bff4] bus labels imply global label",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1005-20261113-174059-bff4] global label implies a bus label (bus-channel attacks)",
+      true,
+      "rows with attack_active=1 but no bus label (line-only attacks)"
+    ],
+    [
+      "[ds-train-s1005-20261113-174059-bff4] attacked_bus_count consistent",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1005-20261113-174059-bff4] normal rows labelled 'normal'",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1005-20261113-174059-bff4] normal rows have zero severity",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1005-20261113-174059-bff4] normal rows have no attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1005-20261113-174059-bff4] attack rows have valid type",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1005-20261113-174059-bff4] attack rows have attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1005-20261113-174059-bff4] attack rows have severity > 0",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1005-20261113-174059-bff4] non-attacked V within 6 sigma of truth",
+      true,
+      "max |dV|=0.00835"
+    ],
+    [
+      "[ds-train-s1005-20261113-174059-bff4] non-attacked angle within 6 sigma of truth",
+      true,
+      "max |dAng|=0.5024"
+    ],
+    [
+      "[ds-train-s1005-20261113-174059-bff4] noise present on normal rows",
+      true,
+      "std dV=0.00199"
+    ],
+    [
+      "[ds-train-s1005-20261113-174059-bff4] steps unique/increasing [ds-train-s1005-20261113-174059-bff4]",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1005-20261113-174059-bff4] each attack id has one type and contiguous steps",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1006-20261113-174116-6eee] schema columns",
+      true,
+      "missing=[] extra=[]"
+    ],
+    [
+      "[ds-train-s1006-20261113-174116-6eee] missing values",
+      true,
+      "0 columns with NaN: []"
+    ],
+    [
+      "[ds-train-s1006-20261113-174116-6eee] power flow converged",
+      true,
+      "0 non-converged rows"
+    ],
+    [
+      "[ds-train-s1006-20261113-174116-6eee] bus labels imply global label",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1006-20261113-174116-6eee] global label implies a bus label (bus-channel attacks)",
+      true,
+      "rows with attack_active=1 but no bus label (line-only attacks)"
+    ],
+    [
+      "[ds-train-s1006-20261113-174116-6eee] attacked_bus_count consistent",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1006-20261113-174116-6eee] normal rows labelled 'normal'",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1006-20261113-174116-6eee] normal rows have zero severity",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1006-20261113-174116-6eee] normal rows have no attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1006-20261113-174116-6eee] attack rows have valid type",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1006-20261113-174116-6eee] attack rows have attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1006-20261113-174116-6eee] attack rows have severity > 0",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1006-20261113-174116-6eee] non-attacked V within 6 sigma of truth",
+      true,
+      "max |dV|=0.00900"
+    ],
+    [
+      "[ds-train-s1006-20261113-174116-6eee] non-attacked angle within 6 sigma of truth",
+      true,
+      "max |dAng|=0.4158"
+    ],
+    [
+      "[ds-train-s1006-20261113-174116-6eee] noise present on normal rows",
+      true,
+      "std dV=0.00201"
+    ],
+    [
+      "[ds-train-s1006-20261113-174116-6eee] steps unique/increasing [ds-train-s1006-20261113-174116-6eee]",
+      true,
+      ""
+    ],
+    [
+      "[ds-train-s1006-20261113-174116-6eee] each attack id has one type and contiguous steps",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2001-20261113-174141-255a] schema columns",
+      true,
+      "missing=[] extra=[]"
+    ],
+    [
+      "[ds-validation-s2001-20261113-174141-255a] missing values",
+      true,
+      "0 columns with NaN: []"
+    ],
+    [
+      "[ds-validation-s2001-20261113-174141-255a] power flow converged",
+      true,
+      "0 non-converged rows"
+    ],
+    [
+      "[ds-validation-s2001-20261113-174141-255a] bus labels imply global label",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2001-20261113-174141-255a] global label implies a bus label (bus-channel attacks)",
+      true,
+      "rows with attack_active=1 but no bus label (line-only attacks)"
+    ],
+    [
+      "[ds-validation-s2001-20261113-174141-255a] attacked_bus_count consistent",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2001-20261113-174141-255a] normal rows labelled 'normal'",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2001-20261113-174141-255a] normal rows have zero severity",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2001-20261113-174141-255a] normal rows have no attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2001-20261113-174141-255a] attack rows have valid type",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2001-20261113-174141-255a] attack rows have attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2001-20261113-174141-255a] attack rows have severity > 0",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2001-20261113-174141-255a] non-attacked V within 6 sigma of truth",
+      true,
+      "max |dV|=0.00827"
+    ],
+    [
+      "[ds-validation-s2001-20261113-174141-255a] non-attacked angle within 6 sigma of truth",
+      true,
+      "max |dAng|=0.4653"
+    ],
+    [
+      "[ds-validation-s2001-20261113-174141-255a] noise present on normal rows",
+      true,
+      "std dV=0.00199"
+    ],
+    [
+      "[ds-validation-s2001-20261113-174141-255a] steps unique/increasing [ds-validation-s2001-20261113-174141-255a]",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2001-20261113-174141-255a] each attack id has one type and contiguous steps",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2002-20261113-174202-c46d] schema columns",
+      true,
+      "missing=[] extra=[]"
+    ],
+    [
+      "[ds-validation-s2002-20261113-174202-c46d] missing values",
+      true,
+      "0 columns with NaN: []"
+    ],
+    [
+      "[ds-validation-s2002-20261113-174202-c46d] power flow converged",
+      true,
+      "0 non-converged rows"
+    ],
+    [
+      "[ds-validation-s2002-20261113-174202-c46d] bus labels imply global label",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2002-20261113-174202-c46d] global label implies a bus label (bus-channel attacks)",
+      true,
+      "rows with attack_active=1 but no bus label (line-only attacks)"
+    ],
+    [
+      "[ds-validation-s2002-20261113-174202-c46d] attacked_bus_count consistent",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2002-20261113-174202-c46d] normal rows labelled 'normal'",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2002-20261113-174202-c46d] normal rows have zero severity",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2002-20261113-174202-c46d] normal rows have no attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2002-20261113-174202-c46d] attack rows have valid type",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2002-20261113-174202-c46d] attack rows have attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2002-20261113-174202-c46d] attack rows have severity > 0",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2002-20261113-174202-c46d] non-attacked V within 6 sigma of truth",
+      true,
+      "max |dV|=0.00921"
+    ],
+    [
+      "[ds-validation-s2002-20261113-174202-c46d] non-attacked angle within 6 sigma of truth",
+      true,
+      "max |dAng|=0.4596"
+    ],
+    [
+      "[ds-validation-s2002-20261113-174202-c46d] noise present on normal rows",
+      true,
+      "std dV=0.00201"
+    ],
+    [
+      "[ds-validation-s2002-20261113-174202-c46d] steps unique/increasing [ds-validation-s2002-20261113-174202-c46d]",
+      true,
+      ""
+    ],
+    [
+      "[ds-validation-s2002-20261113-174202-c46d] each attack id has one type and contiguous steps",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3001-20261113-174242-acc8] schema columns",
+      true,
+      "missing=[] extra=[]"
+    ],
+    [
+      "[ds-test-s3001-20261113-174242-acc8] missing values",
+      true,
+      "0 columns with NaN: []"
+    ],
+    [
+      "[ds-test-s3001-20261113-174242-acc8] power flow converged",
+      true,
+      "0 non-converged rows"
+    ],
+    [
+      "[ds-test-s3001-20261113-174242-acc8] bus labels imply global label",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3001-20261113-174242-acc8] global label implies a bus label (bus-channel attacks)",
+      true,
+      "rows with attack_active=1 but no bus label (line-only attacks)"
+    ],
+    [
+      "[ds-test-s3001-20261113-174242-acc8] attacked_bus_count consistent",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3001-20261113-174242-acc8] normal rows labelled 'normal'",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3001-20261113-174242-acc8] normal rows have zero severity",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3001-20261113-174242-acc8] normal rows have no attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3001-20261113-174242-acc8] attack rows have valid type",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3001-20261113-174242-acc8] attack rows have attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3001-20261113-174242-acc8] attack rows have severity > 0",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3001-20261113-174242-acc8] non-attacked V within 6 sigma of truth",
+      true,
+      "max |dV|=0.00849"
+    ],
+    [
+      "[ds-test-s3001-20261113-174242-acc8] non-attacked angle within 6 sigma of truth",
+      true,
+      "max |dAng|=0.4063"
+    ],
+    [
+      "[ds-test-s3001-20261113-174242-acc8] noise present on normal rows",
+      true,
+      "std dV=0.00200"
+    ],
+    [
+      "[ds-test-s3001-20261113-174242-acc8] steps unique/increasing [ds-test-s3001-20261113-174242-acc8]",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3001-20261113-174242-acc8] each attack id has one type and contiguous steps",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3002-20261113-174314-4527] schema columns",
+      true,
+      "missing=[] extra=[]"
+    ],
+    [
+      "[ds-test-s3002-20261113-174314-4527] missing values",
+      true,
+      "0 columns with NaN: []"
+    ],
+    [
+      "[ds-test-s3002-20261113-174314-4527] power flow converged",
+      true,
+      "0 non-converged rows"
+    ],
+    [
+      "[ds-test-s3002-20261113-174314-4527] bus labels imply global label",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3002-20261113-174314-4527] global label implies a bus label (bus-channel attacks)",
+      true,
+      "rows with attack_active=1 but no bus label (line-only attacks)"
+    ],
+    [
+      "[ds-test-s3002-20261113-174314-4527] attacked_bus_count consistent",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3002-20261113-174314-4527] normal rows labelled 'normal'",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3002-20261113-174314-4527] normal rows have zero severity",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3002-20261113-174314-4527] normal rows have no attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3002-20261113-174314-4527] attack rows have valid type",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3002-20261113-174314-4527] attack rows have attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3002-20261113-174314-4527] attack rows have severity > 0",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3002-20261113-174314-4527] non-attacked V within 6 sigma of truth",
+      true,
+      "max |dV|=0.00868"
+    ],
+    [
+      "[ds-test-s3002-20261113-174314-4527] non-attacked angle within 6 sigma of truth",
+      true,
+      "max |dAng|=0.4183"
+    ],
+    [
+      "[ds-test-s3002-20261113-174314-4527] noise present on normal rows",
+      true,
+      "std dV=0.00199"
+    ],
+    [
+      "[ds-test-s3002-20261113-174314-4527] steps unique/increasing [ds-test-s3002-20261113-174314-4527]",
+      true,
+      ""
+    ],
+    [
+      "[ds-test-s3002-20261113-174314-4527] each attack id has one type and contiguous steps",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_high_noise-s4001-20261113-174334-bbf7] schema columns",
+      true,
+      "missing=[] extra=[]"
+    ],
+    [
+      "[ds-stress_high_noise-s4001-20261113-174334-bbf7] missing values",
+      true,
+      "0 columns with NaN: []"
+    ],
+    [
+      "[ds-stress_high_noise-s4001-20261113-174334-bbf7] power flow converged",
+      true,
+      "0 non-converged rows"
+    ],
+    [
+      "[ds-stress_high_noise-s4001-20261113-174334-bbf7] bus labels imply global label",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_high_noise-s4001-20261113-174334-bbf7] global label implies a bus label (bus-channel attacks)",
+      true,
+      "rows with attack_active=1 but no bus label (line-only attacks)"
+    ],
+    [
+      "[ds-stress_high_noise-s4001-20261113-174334-bbf7] attacked_bus_count consistent",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_high_noise-s4001-20261113-174334-bbf7] normal rows labelled 'normal'",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_high_noise-s4001-20261113-174334-bbf7] normal rows have zero severity",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_high_noise-s4001-20261113-174334-bbf7] normal rows have no attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_high_noise-s4001-20261113-174334-bbf7] attack rows have valid type",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_high_noise-s4001-20261113-174334-bbf7] attack rows have attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_high_noise-s4001-20261113-174334-bbf7] attack rows have severity > 0",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_high_noise-s4001-20261113-174334-bbf7] non-attacked V within 6 sigma of truth",
+      true,
+      "max |dV|=0.01819"
+    ],
+    [
+      "[ds-stress_high_noise-s4001-20261113-174334-bbf7] non-attacked angle within 6 sigma of truth",
+      true,
+      "max |dAng|=0.9390"
+    ],
+    [
+      "[ds-stress_high_noise-s4001-20261113-174334-bbf7] noise present on normal rows",
+      true,
+      "std dV=0.00401"
+    ],
+    [
+      "[ds-stress_high_noise-s4001-20261113-174334-bbf7] steps unique/increasing [ds-stress_high_noise-s4001-20261113-174334-bbf7]",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_high_noise-s4001-20261113-174334-bbf7] each attack id has one type and contiguous steps",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_heavy_load-s4002-20261113-174336-16ff] schema columns",
+      true,
+      "missing=[] extra=[]"
+    ],
+    [
+      "[ds-stress_heavy_load-s4002-20261113-174336-16ff] missing values",
+      true,
+      "0 columns with NaN: []"
+    ],
+    [
+      "[ds-stress_heavy_load-s4002-20261113-174336-16ff] power flow converged",
+      true,
+      "0 non-converged rows"
+    ],
+    [
+      "[ds-stress_heavy_load-s4002-20261113-174336-16ff] bus labels imply global label",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_heavy_load-s4002-20261113-174336-16ff] global label implies a bus label (bus-channel attacks)",
+      true,
+      "rows with attack_active=1 but no bus label (line-only attacks)"
+    ],
+    [
+      "[ds-stress_heavy_load-s4002-20261113-174336-16ff] attacked_bus_count consistent",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_heavy_load-s4002-20261113-174336-16ff] normal rows labelled 'normal'",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_heavy_load-s4002-20261113-174336-16ff] normal rows have zero severity",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_heavy_load-s4002-20261113-174336-16ff] normal rows have no attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_heavy_load-s4002-20261113-174336-16ff] attack rows have valid type",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_heavy_load-s4002-20261113-174336-16ff] attack rows have attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_heavy_load-s4002-20261113-174336-16ff] attack rows have severity > 0",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_heavy_load-s4002-20261113-174336-16ff] non-attacked V within 6 sigma of truth",
+      true,
+      "max |dV|=0.00882"
+    ],
+    [
+      "[ds-stress_heavy_load-s4002-20261113-174336-16ff] non-attacked angle within 6 sigma of truth",
+      true,
+      "max |dAng|=0.4742"
+    ],
+    [
+      "[ds-stress_heavy_load-s4002-20261113-174336-16ff] noise present on normal rows",
+      true,
+      "std dV=0.00200"
+    ],
+    [
+      "[ds-stress_heavy_load-s4002-20261113-174336-16ff] steps unique/increasing [ds-stress_heavy_load-s4002-20261113-174336-16ff]",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_heavy_load-s4002-20261113-174336-16ff] each attack id has one type and contiguous steps",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_low_intensity-s4003-20261113-174505-0a71] schema columns",
+      true,
+      "missing=[] extra=[]"
+    ],
+    [
+      "[ds-stress_low_intensity-s4003-20261113-174505-0a71] missing values",
+      true,
+      "0 columns with NaN: []"
+    ],
+    [
+      "[ds-stress_low_intensity-s4003-20261113-174505-0a71] power flow converged",
+      true,
+      "0 non-converged rows"
+    ],
+    [
+      "[ds-stress_low_intensity-s4003-20261113-174505-0a71] bus labels imply global label",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_low_intensity-s4003-20261113-174505-0a71] global label implies a bus label (bus-channel attacks)",
+      true,
+      "rows with attack_active=1 but no bus label (line-only attacks)"
+    ],
+    [
+      "[ds-stress_low_intensity-s4003-20261113-174505-0a71] attacked_bus_count consistent",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_low_intensity-s4003-20261113-174505-0a71] normal rows labelled 'normal'",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_low_intensity-s4003-20261113-174505-0a71] normal rows have zero severity",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_low_intensity-s4003-20261113-174505-0a71] normal rows have no attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_low_intensity-s4003-20261113-174505-0a71] attack rows have valid type",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_low_intensity-s4003-20261113-174505-0a71] attack rows have attack id",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_low_intensity-s4003-20261113-174505-0a71] attack rows have severity > 0",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_low_intensity-s4003-20261113-174505-0a71] non-attacked V within 6 sigma of truth",
+      true,
+      "max |dV|=0.00853"
+    ],
+    [
+      "[ds-stress_low_intensity-s4003-20261113-174505-0a71] non-attacked angle within 6 sigma of truth",
+      true,
+      "max |dAng|=0.4260"
+    ],
+    [
+      "[ds-stress_low_intensity-s4003-20261113-174505-0a71] noise present on normal rows",
+      true,
+      "std dV=0.00200"
+    ],
+    [
+      "[ds-stress_low_intensity-s4003-20261113-174505-0a71] steps unique/increasing [ds-stress_low_intensity-s4003-20261113-174505-0a71]",
+      true,
+      ""
+    ],
+    [
+      "[ds-stress_low_intensity-s4003-20261113-174505-0a71] each attack id has one type and contiguous steps",
+      true,
+      ""
+    ]
+  ],
+  "n_rows": 32500,
+  "n_runs": 13,
+  "attack_fraction": 0.3614769230769231,
+  "attack_type_steps": {
+    "normal": 20752,
+    "scaling": 3563,
+    "coordinated": 3177,
+    "additive": 2736,
+    "replay": 2272
+  },
+  "attack_type_events": {
+    "additive": 108,
+    "coordinated": 125,
+    "replay": 90,
+    "scaling": 135
+  },
+  "per_bus_attacked_steps": {
+    "1": 1225,
+    "2": 1019,
+    "3": 1029,
+    "4": 1539,
+    "5": 979,
+    "6": 1637,
+    "7": 876,
+    "8": 1043,
+    "9": 1361,
+    "10": 1801,
+    "11": 754,
+    "12": 1317,
+    "13": 1040,
+    "14": 927,
+    "15": 1632,
+    "16": 1406,
+    "17": 1212,
+    "18": 1195,
+    "19": 1329,
+    "20": 1129,
+    "21": 1069,
+    "22": 1603,
+    "23": 1284,
+    "24": 1459,
+    "25": 1481,
+    "26": 954,
+    "27": 1620,
+    "28": 1234,
+    "29": 1017,
+    "30": 1242
+  },
+  "severity_by_type": {
+    "additive": {
+      "count": 2736.0,
+      "mean": 13.737,
+      "std": 5.065,
+      "min": 4.458,
+      "25%": 9.956,
+      "50%": 13.706,
+      "75%": 17.945,
+      "max": 27.337
+    },
+    "coordinated": {
+      "count": 3177.0,
+      "mean": 8.257,
+      "std": 3.57,
+      "min": 1.18,
+      "25%": 5.933,
+      "50%": 7.694,
+      "75%": 10.48,
+      "max": 19.046
+    },
+    "replay": {
+      "count": 2272.0,
+      "mean": 3.393,
+      "std": 2.181,
+      "min": 0.229,
+      "25%": 1.775,
+      "50%": 2.722,
+      "75%": 4.429,
+      "max": 15.342
+    },
+    "scaling": {
+      "count": 3563.0,
+      "mean": 8.348,
+      "std": 3.871,
+      "min": 0.989,
+      "25%": 5.679,
+      "50%": 8.297,
+      "75%": 10.999,
+      "max": 19.442
+    }
+  },
+  "unrated_line_loading_nan_cells": 0,
+  "total_load_range_mw": [
+    109.42405341460464,
+    259.6801450008907
+  ]
+}
