@@ -19,8 +19,12 @@ def graph(id_: str) -> dcc.Graph:
 
 def build_layout(refresh_ms: int, tab_refresh_ms: int = 5000) -> html.Div:
     return html.Div([
+        # one interval per callback group; each is paused while its callback runs (see callbacks.py),
+        # so a slow refresh is never discarded and replaced by the next one
+        dcc.Interval(id="tick-head", interval=refresh_ms, n_intervals=0),
         dcc.Interval(id="tick", interval=refresh_ms, n_intervals=0),
-        dcc.Interval(id="tick-tab", interval=tab_refresh_ms, n_intervals=0),
+        *[dcc.Interval(id=f"tick-{t}", interval=tab_refresh_ms, n_intervals=0)
+          for t in ("twin", "meas", "attacks", "ai", "physics", "alerts")],
         dcc.Store(id="selected-bus", data=None),
         html.Div([
             html.Div([html.Span("GridSentinel AI", className="brand"),

@@ -71,7 +71,8 @@ def render_header(client: APIClient, history_points: int = 300):
         f"{sysd['total_load_q_mvar']:.1f} MVAr",
         f"{gt.get('total_attack_events', 0)}",
         f"{1 if gt.get('attack_active') else 0}" + (f" ({gt['attack_type']})" if gt.get("attack_active") else ""),
-        _fmt(ai["attack_probability"], "{:.3f}") if ai else "n/a",
+        (_fmt(ai["attack_probability"], "{:.3f}") if ai else "n/a")
+        + (f" (step {latest['prediction_step']})" if ai and (latest.get("prediction_lag_steps") or 0) > 2 else ""),
         (ai["prediction"] if ai else "n/a") + (f" · combined {comb['decision']}" if comb else ""),
         ("BAD DATA" if ph and ph.get("bad_data_detected") else ("consistent" if ph else "n/a"))
         + (f" · {comb['agreement']}" if comb else ""),
@@ -372,7 +373,8 @@ def register_callbacks(app, client: APIClient, cfg: dict) -> None:
                   + [Output(k, "children") for k in ("k-sim", "k-step", "k-buses", "k-load-p", "k-load-q",
                                                     "k-events", "k-active", "k-prob", "k-det", "k-phys")]
                   + [Output("footer", "children")],
-                  Input("tick", "n_intervals"))
+                  Input("tick-head", "n_intervals"),
+                  running=[(Output("tick-head", "disabled"), True, False)])
     def _header(_):
         try:
             badges, banner, kpis = render_header(client, points)
@@ -401,12 +403,14 @@ def register_callbacks(app, client: APIClient, cfg: dict) -> None:
             raise PreventUpdate
 
     @app.callback([Output("g-prob", "figure"), Output("g-load", "figure"), Output("g-vheat", "figure")],
-                  Input("tick", "n_intervals"), Input("tabs", "value"))
+                  Input("tick", "n_intervals"), Input("tabs", "value"),
+                  running=[(Output("tick", "disabled"), True, False)])
     def _overview(_, tab):
         _only("overview")(tab)
         return _safe(render_overview, client, points)
 
-    @app.callback(Output("g-twin", "figure"), Input("tick-tab", "n_intervals"), Input("tabs", "value"))
+    @app.callback(Output("g-twin", "figure"), Input("tick-twin", "n_intervals"), Input("tabs", "value"),
+                  running=[(Output("tick-twin", "disabled"), True, False)])
     def _twin(_, tab):
         _only("twin")(tab)
         return _safe(render_twin, client)
@@ -420,10 +424,10 @@ def register_callbacks(app, client: APIClient, cfg: dict) -> None:
             return int(cd[1])
         raise PreventUpdate
 
-    @app.callback(Output("bus-details", "children"), Input("bus-pick", "value"), Input("tick-tab", "n_intervals"),
+    @app.callback(Output("bus-details", "children"), Input("bus-pick", "value"), Input("tick-twin", "n_intervals"),
                   State("tabs", "value"))
     def _details(bus_no, _, tab):
-        if tab != "twin" and ctx.triggered_id == "tick-tab":
+        if tab != "twin" and ctx.triggered_id == "tick-twin":
             raise PreventUpdate
         return render_bus_details(client, bus_no)
 
@@ -431,8 +435,9 @@ def register_callbacks(app, client: APIClient, cfg: dict) -> None:
                   + [Output(g, "figure") for g in ("g-vbar", "g-vhist", "g-abar", "g-adiff", "g-ahist", "g-pbar",
                                                    "g-qbar", "g-gen", "g-load2", "g-loading", "g-pq-ends",
                                                    "g-current", "g-line-hist")],
-                  Input("tick-tab", "n_intervals"), Input("tabs", "value"), Input("hist-buses", "value"),
-                  Input("hist-lines", "value"))
+                  Input("tick-meas", "n_intervals"), Input("tabs", "value"), Input("hist-buses", "value"),
+                  Input("hist-lines", "value"),
+                  running=[(Output("tick-meas", "disabled"), True, False)])
     def _meas(_, tab, hb, hl):
         _only("measurements")(tab)
         return _safe(render_measurements, client, hb, hl, points)
@@ -440,7 +445,8 @@ def register_callbacks(app, client: APIClient, cfg: dict) -> None:
     @app.callback([Output("attack-current", "children"), Output("g-type-counts", "figure")]
                   + [Output(f"g-tl-{t}", "figure") for t in ("additive", "scaling", "replay", "coordinated")]
                   + [Output("g-perbus-gt", "figure"), Output("event-table", "children")],
-                  Input("tick-tab", "n_intervals"), Input("tabs", "value"))
+                  Input("tick-attacks", "n_intervals"), Input("tabs", "value"),
+                  running=[(Output("tick-attacks", "disabled"), True, False)])
     def _attacks(_, tab):
         _only("attacks")(tab)
         return _safe(render_attacks, client)
@@ -448,21 +454,24 @@ def register_callbacks(app, client: APIClient, cfg: dict) -> None:
     @app.callback([Output("offline-kpis", "children"), Output("g-perbus-f1", "figure"), Output("g-cm-type", "figure"),
                    Output("g-cm-det", "figure"), Output("regime-table", "children"), Output("live-kpis", "children"),
                    Output("g-busprob", "figure")],
-                  Input("tick-tab", "n_intervals"), Input("tabs", "value"))
+                  Input("tick-ai", "n_intervals"), Input("tabs", "value"),
+                  running=[(Output("tick-ai", "disabled"), True, False)])
     def _ai(_, tab):
         _only("ai")(tab)
         return _safe(render_ai, client)
 
     @app.callback([Output("physics-cards", "children"), Output("g-est-v", "figure"), Output("g-est-a", "figure"),
                    Output("g-chi2", "figure"), Output("residual-table", "children")],
-                  Input("tick-tab", "n_intervals"), Input("tabs", "value"))
+                  Input("tick-physics", "n_intervals"), Input("tabs", "value"),
+                  running=[(Output("tick-physics", "disabled"), True, False)])
     def _physics(_, tab):
         _only("physics")(tab)
         return _safe(render_physics, client, points)
 
     @app.callback([Output("alert-table", "children"), Output("mitigation-panel", "children"),
                    Output("g-recovery", "figure"), Output("g-load-recovery", "figure")],
-                  Input("tick-tab", "n_intervals"), Input("tabs", "value"))
+                  Input("tick-alerts", "n_intervals"), Input("tabs", "value"),
+                  running=[(Output("tick-alerts", "disabled"), True, False)])
     def _alerts(_, tab):
         _only("alerts")(tab)
         return _safe(render_alerts, client)

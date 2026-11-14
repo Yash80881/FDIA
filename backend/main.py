@@ -120,8 +120,15 @@ def create_app(cfg: dict | None = None, start_monitor: bool = True) -> FastAPI:
         run = resolve_run(s, run_id)
         step = latest_step(s, run)
         row = s.repo.get_row(run["run_id"], step)
-        pred = get_pred(s, run["run_id"], step)
+        # Never block on an on-demand computation here: on a slow PC the monitor can be a few steps behind,
+        # and computing the newest step inside this request made the dashboard time out.  Use the newest
+        # prediction the monitor has already produced and report which step it belongs to.
+        pred = s.prediction(run["run_id"], step) or s.repo.latest_prediction(run["run_id"], step)
+        pred_step = (pred or {}).get("step")
         stats = s.repo.attack_statistics(run["run_id"])
+        gt_row = {"attack_active": bool(row["attack_active"]), "attack_type": row["attack_type"],
+                  "attack_id": row["attack_id"], "severity": row["attack_severity"],
+                  "attacked_buses": [b for b in range(1, S.N_BUS + 1) if row[f"attack_bus_{b}"]]}
         gens = [{"gen": g, "bus": s.grid.generator_buses[g - 1], "p_mw": row[f"Pg_true_gen_{g}"],
                  "q_mvar": row[f"Qg_true_gen_{g}"]} for g in range(1, S.N_GEN + 1)]
         return {
@@ -135,8 +142,9 @@ def create_app(cfg: dict | None = None, start_monitor: bool = True) -> FastAPI:
                        "generator_limit_violations": row["gen_limit_violations"] or None},
             "received": {"V_pu": [row[c] for c in S.bus_cols("V_meas")],
                          "Ang_deg": [row[c] for c in S.bus_cols("Ang_meas")]},
-            "ground_truth": {**(pred or {}).get("ground_truth", {}),
-                             "total_attack_events": stats["total_events"]},
+            "ground_truth": {**gt_row, "total_attack_events": stats["total_events"]},
+            "prediction_step": pred_step,
+            "prediction_lag_steps": (step - pred_step) if pred_step is not None else None,
             "ai": (pred or {}).get("ai"),
             "ai_error": (pred or {}).get("ai_error") or s.model_error,
             "physics": _physics_summary((pred or {}).get("physics")),

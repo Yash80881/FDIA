@@ -157,14 +157,14 @@ api:
   host: 127.0.0.1
   port: 8000
   monitor_poll_s: 0.5        # backend monitor checks for new snapshots this often
-  max_catch_up_steps: 20     # beyond this backlog, steps are counted as dropped
+  max_catch_up_steps: 3      # if the monitor falls further behind, it jumps to the newest snapshot (skipped = dropped)
   history_limit: 600
 
 dashboard:
   host: 127.0.0.1
   port: 8050
   refresh_ms: 2000           # header KPIs + overview
-  tab_refresh_ms: 5000       # heavier tabs (twin, measurements, attacks, AI, physics, alerts)
+  tab_refresh_ms: 3000       # heavier tabs (twin, measurements, attacks, AI, physics, alerts)
   history_points: 300
 
 retention:

@@ -177,11 +177,11 @@ class MonitorService:
                 if latest - start + 1 > max_backlog:
                     self.state["dropped"] += latest - max_backlog + 1 - start
                     start = latest - max_backlog + 1
-                for step in range(start, latest + 1):
-                    if self.stop_event.is_set():
-                        break
-                    self.process_step(repo, rid, step)
-                    self.state["last_step"] = step
+                # Process one step, then re-check the newest step: if the simulator has run ahead by more
+                # than ``max_catch_up_steps`` the monitor jumps forward, so the live AI result always belongs
+                # to (almost) the newest snapshot instead of trailing further and further behind.
+                self.process_step(repo, rid, start)
+                self.state["last_step"] = start
                 lat = self.state["latencies"][-200:]
                 repo.update_monitor_stats(rid, self.state["processed"], self.state["dropped"],
                                           self.state["last_step"], float(np.mean(lat)) if lat else 0.0)

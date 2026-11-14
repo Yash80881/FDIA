@@ -192,6 +192,12 @@ class Repository:
                                  " VALUES(?,?,?,?)", (run_id, step, json.dumps(payload, default=_json_default),
                                                        time.time()))
 
+    def latest_prediction(self, run_id: str, max_step: int) -> dict | None:
+        """Most recent cached prediction at or before ``max_step`` (indexed lookup)."""
+        rows = self.db.query("SELECT payload FROM predictions WHERE run_id=? AND step<=? ORDER BY step DESC LIMIT 1",
+                             (run_id, max_step))
+        return json.loads(rows[0]["payload"]) if rows else None
+
     def prediction_history(self, run_id: str, limit: int) -> list[dict]:
         rows = self.db.query("SELECT step, payload FROM predictions WHERE run_id=? ORDER BY step DESC LIMIT ?",
                              (run_id, limit))

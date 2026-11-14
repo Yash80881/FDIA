@@ -69,7 +69,9 @@ def probability_history(h: dict) -> go.Figure:
     fig = go.Figure()
     _attack_shapes(d["step"], d.get("attack_active", []), fig)
     if ai:
-        fig.add_trace(go.Scatter(x=ai["step"], y=ai["attack_probability"], name="AI attack probability",
+        # fig.add_trace(go.Scatter(x=ai["step"], y=ai["attack_probability"], name="AI attack probability",
+                fig.add_trace(go.Scatter(x=ai["step"], y=ai["attack_probability"], name="AI attack probability",
+                                 connectgaps=True,
                                  line=dict(color="#fbbf24", width=2)))
     fig.add_trace(go.Scatter(x=d["step"], y=d.get("attack_active", []), name="Ground truth attack (simulator)",
                              line=dict(color="#ef4444", width=1, shape="hv", dash="dot")))
